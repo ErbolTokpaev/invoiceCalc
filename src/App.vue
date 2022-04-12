@@ -1,28 +1,26 @@
 <template>
-  <div id="app">
-    <home-view />
-  </div>
+  <v-app>
+    <v-main>
+      <v-toolbar color="primary">
+        <h1 class="white--text">Vue Invoice Calc</h1>
+      </v-toolbar>
+      <HomeView></HomeView>
+    </v-main>
+  </v-app>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import HomeView from "./views/home-view/home-view.vue";
+import Vue from "vue";
+import HomeView from "@/views/home-view/home-view.vue";
+export default Vue.extend({
+  name: "App",
 
-@Component({
   components: {
-    "home-view": HomeView,
+    HomeView,
   },
-})
-export default class App extends Vue {}
-</script>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  data: () => ({
+    //
+  }),
+});
+</script>

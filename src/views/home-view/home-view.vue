@@ -1,23 +1,15 @@
 <template>
   <div
-    style="
-      max-width: 12000px;
-      width: 1200px;
-      display: flex;
-      flex-direction: column;
-      align-content: center;
-      margin: 0 auto;
-    "
+    class="d-flex flex-column align-center mx-auto pt-5"
+    style="max-width: 1000px; width: 100%"
   >
-    <h1>Vue Invoice calc</h1>
     <ProductForm></ProductForm>
-    <span>{{ helloMessage }}</span>
-    <product-table></product-table>
+    <ProductTable :products="products" :totalSum="totalSum"></ProductTable>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 import ProductForm from "@/components/ProductForm.vue";
 import ProductTable from "@/components/ProductTable.vue";
 @Component({
@@ -27,13 +19,15 @@ import ProductTable from "@/components/ProductTable.vue";
   },
 })
 export default class HomeView extends Vue {
-  get helloMessage() {
+  get products() {
     return this.$store.state.product.products;
+  }
+  get totalSum() {
+    return this.$store.getters.getTotalSum;
+  }
+  mounted() {
+    this.$store.commit("INIT");
   }
 }
 </script>
-<style>
-span {
-  color: red;
-}
-</style>
+<style></style>

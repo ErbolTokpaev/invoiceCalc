@@ -1,5 +1,5 @@
-import { IProducts } from "@/types/IProduct";
+import { Product } from "@/types/IProduct";
 
 export interface ProductState {
-  products: IProducts;
+  products: Product[];
 }
